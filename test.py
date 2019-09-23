@@ -28,6 +28,33 @@ payload = {"action": "create",
 ##send a requets to create a user with passed info
 # createUserResponse = s.post(url_user_new, data=payload, headers= headers)
 ##create a user
-createUserResponse
+# createUserResponse
+
+#------------------------------------#
+#user login page with passed info
+url_login = url_base + "/bWAPP/login.php"
+payload = {
+			"login": login,
+			"password": password,
+			"form": "submit"
+			}
+#send a requets to login the user with passed info
+loginUserResponse = s.post(url_login, data=payload, headers= headers)
+#login the user
+loginUserResponse.content
+
+#------------------------------------#
+#go to bugs page to select one
+url_bugs = url_base + "/bWAPP/portal.php"
+#select one bug using it's value
+payload = {
+			"bug": 49,
+			"form": "submit"
+			}
+#send a request to select the passed bug value
+selectBugResponse = s.post(url_bugs, data=payload, headers= headers)
+#select the bug
+selectBugResponse.content
+
 
 
