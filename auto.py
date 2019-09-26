@@ -1,15 +1,17 @@
 import requests
 from bs4 import BeautifulSoup
 import mechanize
-# import re
+import urllib.request  as urllib2 
+import re
 # import html
+
 
 #------------------------------------#
 #info to create a new users
 login = "bee"
 password = "bug"
 email = "beez@site.com"
-security_level = 0
+security_level = 2
 secret = "My secret is sooo sicr3t"
 url_base = "http://192.168.3.167"
 
@@ -76,7 +78,7 @@ field_1_name = str(inputFieldNames[0])
 field_2_name = str(inputFieldNames[1])
 
 
-xss = """<script>alert("Oh!");</script>"""
+xss = """<script>alert("Oh!")</script>"""
 
 field_1_val = xss
 field_2_val = "qqqqqqqqqqqq"
@@ -98,26 +100,26 @@ browser.form[field_1_name] = field_1_val
 browser.form[field_2_name] = field_2_val
 browser.submit()
 
-# pattern = re.compile(xss)
+pattern = re.compile(xss)
 finalResult = browser.response().read()
 
 parseHTML = BeautifulSoup(finalResult, 'html.parser')
-parseHTML = parseHTML.prettify(formatter=None)
+
+parseHTML_Pretty = parseHTML.prettify(formatter=None)
 
 
-# if parseHTML.findAll(string=pattern):
-#     print("Application is vulnerable")
-# else:
-#     print("You are in good hands")
+script = parseHTML.find_all(string=re.compile(r'\<script>(.*?)\</script>'))
 
+# print(script)
 
-# print(parseHTML.prettify(formatter=None))
-# print(parseHTML.encode(formatter=None))
+if script:
+	alert = re.findall(r'(?<=alert\(\").+(?=\")', script[0])
+	
+	# print(script)
 
-if xss in parseHTML:
-    print("Application is vulnerable")
+	if alert:
+	    print("Application is vulnerable by injected =>>> "+ xss )
+	    # print(alert)
 else:
-    print("You are in good hands")
-
-# print(parseHTML)
-print(parseHTML)
+	print("You are in good hands")
+		
