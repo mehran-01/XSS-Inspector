@@ -72,10 +72,10 @@ for i in range(len(inputFieldNames)):
 for i in range(len(inputFieldLabels)):
 	if "user" in inputFieldNames[i] or "user" in inputFieldLabels[i] or "email" in inputFieldNames[i] or "email" in inputFieldLabels[i]:
 		browser.find_element_by_name(inputFieldNames[i]).send_keys(user)
-		print(user)
+		# print(user)
 	if "pass" in inputFieldNames[i] or "pass" in inputFieldLabels[i]:
 		browser.find_element_by_name(inputFieldNames[i]).send_keys(password)
-		print(password)
+		# print(password)
 	
 # print(inputFieldNames)
 

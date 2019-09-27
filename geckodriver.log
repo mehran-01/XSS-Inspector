@@ -5372,3 +5372,27 @@ console.log: Accessibility service init or shutdown observer does not exist.
 1569568909947	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilegS0oyY"
 1569568914365	Marionette	INFO	Listening on port 37861
 1569568914487	Marionette	WARN	TLS certificate errors will be ignored for this session
+1569569016074	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileHy4ni0"
+1569569020930	Marionette	INFO	Listening on port 46373
+1569569021053	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: Accessibility service init or shutdown observer does not exist.
+[Child 30234, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /build/firefox-esr-5uDrOt/firefox-esr-60.8.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 694
+[Child 30234, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /build/firefox-esr-5uDrOt/firefox-esr-60.8.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 694
+[Child 30234, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /build/firefox-esr-5uDrOt/firefox-esr-60.8.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 694
+[Child 30234, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /build/firefox-esr-5uDrOt/firefox-esr-60.8.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 694
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+console.log: Accessibility service init or shutdown observer does not exist.
+console.log: Accessibility service init or shutdown observer does not exist.
+console.log: Accessibility service init or shutdown observer does not exist.
+1569569056618	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileOpeNzL"
+1569569061016	Marionette	INFO	Listening on port 45225
+1569569061042	Marionette	WARN	TLS certificate errors will be ignored for this session
+Sandbox: seccomp sandbox violation: pid 30472, tid 30596, syscall 203, args 30596 128 140308893244928 140308893247952 1 0.
+console.log: Accessibility service init or shutdown observer does not exist.
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x550027,name=PNecko::Msg_RemoveRequestContext) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
