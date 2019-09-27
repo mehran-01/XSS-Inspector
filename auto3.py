@@ -13,7 +13,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
 base_url = "https://google-gruyere.appspot.com/618655413586375839657115594994104056558"
-# base_url = "https://www.facebook.com"
+base_url = "https://www.facebook.com"
 #------------------------------------#
 # reg_url = "http://google-gruyere.appspot.com/start"
 #------------------------------------#
@@ -91,10 +91,16 @@ time.sleep(10)
 current_url = browser.current_url
 newurl = base_url+"/"+"""<ScRipT>alert("XSS");</ScRipT>""";
 browser.get(newurl);
-if "alert" in newurl:
-	alert = browser.switch_to.alert
-	time.sleep(3)
-	alert.accept()
+try:
+    WebDriverWait(browser, 3).until(EC.alert_is_present(),
+                                   'Timed out waiting for PA creation ' +
+                                   'confirmation popup to appear.')
+
+    alert = browser.switch_to.alert
+    alert.accept()
+    print("alert accepted")
+except TimeoutException:
+    print("no alert")
 
 time.sleep(3)
 
