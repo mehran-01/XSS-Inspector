@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 # import urllib.request  as urllib2 
 # import re
 # import html
+import time
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -13,12 +14,14 @@ from selenium.webdriver.common.keys import Keys
 # from selenium.webdriver.common.by import By
 # from selenium.common.exceptions import TimeoutException
 
-base_url = "http://172.20.9.225"
+base_url = "https://google-gruyere.appspot.com/421818625635039223903695198186248862056"
 #------------------------------------#
-#info to create a new users
-login = "bee"
-password = "bug"
-email = "beez@site.com"
+
+# reg_url = "http://google-gruyere.appspot.com/start"
+
+#------------------------------------#
+#user login page with passed info
+url_login = base_url + "/login"
 
 #add a session to the request
 s = requests.session()
@@ -28,10 +31,6 @@ headers = {
 }
 
 
-#------------------------------------#
-#user login page with passed info
-url_login = base_url + "/bWAPP/login.php"
-
 request = s.get(url_login)
 
 #parse HTML page
@@ -40,7 +39,7 @@ parseHTML = BeautifulSoup(request.text, 'html.parser')
 #Extract the form name using Beautifull Soap
 htmlForm = parseHTML.form
 
-inputs = htmlForm.find_all('input')
+inputs = htmlForm.find_all('input', type="text")
 
 
 #Extract Input Field Names
@@ -50,22 +49,31 @@ for items in inputs:
 	if items.has_attr('name'):
 		inputFieldNames.append(items['name'])
 
-field_1_name = str(inputFieldNames[0])
-field_2_name = str(inputFieldNames[1])
-
-print(inputFieldNames)
-
 
 browser = webdriver.Firefox()
 browser.get(url_login) 
-# time.sleep(10)
 
 
-username = browser.find_element_by_xpath("""//*[@id="login"]""")
-password = browser.find_element_by_xpath("""//*[@id="password"]""")
+time.sleep(3)
 
-username.send_keys("bee")
-password.send_keys("bug")
+for i in range(len(inputFieldNames)):
+	browser.find_element_by_name(inputFieldNames[i]).send_keys("demo123")
 
-login_attempt = browser.find_element_by_name("form")
+
+time.sleep(5)
+
+login_attempt = browser.find_element_by_xpath("//input[@type='submit']")
 login_attempt.submit()
+
+time.sleep(3)
+
+current_url = browser.current_url
+newurl = base_url+"/<script>alert('Ohhhhhhhh!');</script>";
+browser.get(newurl);
+
+
+# newsnippet_url = base_url + "/newsnippet.gtl"
+
+# new_snippet = browser.find_element_by_xpath("""/html/body/div[2]/div/form/textarea""")
+
+# new_snippet.send_keys("<script>alert</script>")
