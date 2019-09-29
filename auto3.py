@@ -12,14 +12,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
-base_url = "https://google-gruyere.appspot.com/618655413586375839657115594994104056558"
+# base_url = "https://google-gruyere.appspot.com/618655413586375839657115594994104056558"
 base_url = "https://www.facebook.com"
 #------------------------------------#
 # reg_url = "http://google-gruyere.appspot.com/start"
 #------------------------------------#
 #info to create a new users
-user = "demo2019"
-password = "123456"
+user = "smith.jhsn@gmail.com"
+password = "smith2013"
 #------------------------------------#
 #user login page with passed info
 url_login = base_url + "/login"
