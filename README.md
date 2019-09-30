@@ -1,1 +1,1 @@
-# auto_XSS_pen_tester
+# auto XSSer is An an automated penetration testing tool to test XSS vulnerabilities on web applications

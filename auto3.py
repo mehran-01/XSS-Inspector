@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import urllib.request
 import time
 
 from selenium import webdriver
@@ -8,9 +7,6 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-
-payloads_url = "https://gist.githubusercontent.com/phra/76518994c908ac836ec5a393f188f89a/raw/db3112239e3b0bb3300abc7ce234d17ae1625163/xss-top500.txt"
-payloads = urllib.request.urlopen(payloads_url)
 
 
 base_url = "https://google-gruyere.appspot.com/618655413586375839657115594994104056558"
@@ -52,7 +48,7 @@ for items in inputs:
 		inputFieldNames.append(items['name'])
 
 
-time.sleep(5)
+time.sleep(1)
 
 
 browser = webdriver.Firefox()
@@ -82,12 +78,12 @@ for i in range(len(inputFieldLabels)):
 
 
 
-time.sleep(10)
+time.sleep(3)
 
 login_attempt = browser.find_element_by_xpath("""//input[@type='submit' or @value='1']""")
 login_attempt.submit()
 
-time.sleep(10)
+time.sleep(3)
 
 
 # current_url = browser.current_url
@@ -112,6 +108,6 @@ def handleAlert(browser, base_url, payload, sleep_time):
 
 
 
-
-for payload in payloads:
-  handleAlert(browser, base_url, payload, 3)
+with open("xss-top500.txt", "r") as payloads:
+  for payload in payloads:
+    handleAlert(browser, base_url, payload, 1)
