@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import time
+import sys
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -12,7 +13,7 @@ from selenium.common.exceptions import TimeoutException
 # reg_url = "http://google-gruyere.appspot.com/start"
 
 base_url = "https://google-gruyere.appspot.com/618655413586375839657115594994104056558"
-base_url = "https://www.facebook.com"
+# base_url = "https://www.facebook.com"
 
 
 #user login page with passed info
@@ -25,8 +26,8 @@ browser = webdriver.Firefox()
 
 
 #info to create a new users
-user = "smith.jhsn@gmail.com"
-password = "smith2013"
+user = "demo2019"
+password = "123456"
 
 
 
@@ -82,13 +83,13 @@ def findLoginButtonAndClick(browser):
 		login_attempt.submit()
 		print("logged in")
 	except:
-		login_attempt = browser.find_element_by_xpath("""//button[@type='submit']""")
-		print("submit button clicked")
-		login_attempt.submit()
-		print("logged in")
-	else:
-		print("didn't login")
-
+		try:
+			login_attempt = browser.find_element_by_xpath("""//button[@type='submit']""")
+			print("submit button clicked")
+			login_attempt.submit()
+			print("logged in")
+		except:
+			print("didn't login")
 
 
 
@@ -104,8 +105,17 @@ def handleAlert(browser, base_url, payload, sleep_time):
     alert = browser.switch_to.alert
     alert.accept()
     print("alert popped up and accepted")
-  except TimeoutException:
+    time.sleep(sleep_time)
+  except:
     print("no alert popped up")
+    time.sleep(sleep_time)
+  finally:
+  	current_url = browser.current_url
+  	r = requests.get(current_url)
+  	if payload.rstrip('\n') in r.content:
+  		print("was able to inject: " + payload)
+  	else:
+  		print("was not injected!")
   time.sleep(sleep_time)
 
 
