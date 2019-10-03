@@ -32,5 +32,7 @@ Add driver to your PATH(e.g. in linux):
 
 ![Alt text](/images/auto-XSSer-Facebook-Firefox.png?raw=true "auto XSSer Facebook Firefox")
 
-**Optional; Pass user and password to login to the website automatically(e.g. facebook.com at your own risk) :**
+**(Optional) Pass user and password to login to the website automatically(e.g. facebook.com at your own risk) :**
 >python auto.py -h https://facebook.com -user [your user name] -password [your password]
+
+![Alt text](/images/auto-XSSer-Facebook-loggedin-Firefox.png?raw=true "auto XSSer Facebook logged in Firefox")
