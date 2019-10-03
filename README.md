@@ -20,6 +20,7 @@ Add driver to your PATH(e.g. in linux):
 
 **Test on a XSS *vulnerable website* (e.g. Google Gruyere):**
 * Note: id in url is the instance that I've created but you can create yours through https://google-gruyere.appspot.com/start
+
 >python auto.py -h https://google-gruyere.appspot.com/618655413586375839657115594994104056558/
 
 ![Alt text](/images/auto-XSSer-Google-Gruyere-terminal.png?raw=true "Google Gruyere terminal")
