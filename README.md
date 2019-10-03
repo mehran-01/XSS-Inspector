@@ -1,5 +1,5 @@
 ### auto-XSSer is An an automated penetration testing tool to test XSS vulnerabilities on web applications
-* Note:* this app built for velnerabalities testing purporse by an authorised user so I m not responsible for any misuse
+* Note: this app built for velnerabalities testing purporses by an authorised user so I m not responsible for any misuse
 
 ### Requirements:
 Download geckodriver from for Firefox from link below:
@@ -18,13 +18,13 @@ Add driver to your PATH(e.g. in linux):
 
 ![Alt text](/images/auto-XSSer-help-command.png?raw=true "help command")
 
-**Run on Google Gruyere(a XSS *vulnerable website*):**
+**Test on a XSS *vulnerable website* (e.g. Google Gruyere):**
 *Note: id in url is the instance that I've created but you can create your in https://google-gruyere.appspot.com/start*
 >python auto.py -h https://google-gruyere.appspot.com/618655413586375839657115594994104056558/
 
 
 
-**Run on non vulnerable website(e.g. facebook.com at your own risk)**
+**Test on a *non XSS vulnerable website*, possibly! (e.g. facebook.com at your own risk!)**
 >python auto.py -h https://facebook.com
 
 
