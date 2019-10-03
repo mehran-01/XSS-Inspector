@@ -24,11 +24,12 @@ Add driver to your PATH(e.g. in linux):
 
 ![Alt text](/images/auto-XSSer-Google-Gruyere-terminal.png?raw=true "Google Gruyere terminal")
 
-![Alt text](/images/auto-XSSer-Google-Gruyere-Firefox.png?raw=true "auto XSSer Google GruyereFirefox")
+![Alt text](/images/auto-XSSer-Google-Gruyere-Firefox.png?raw=true "auto XSSer Google Gruyere Firefox")
 
 **Test on a *non XSS vulnerable website*, possibly! (e.g. facebook.com at your own risk!)**
 >python auto.py -h https://facebook.com
 
+![Alt text](/images/auto-XSSer-Facebook-Firefox.png?raw=true "auto XSSer Facebook Firefox")
 
 **Optional; Pass user and password to login to the website automatically(e.g. facebook.com at your own risk) :**
 >python auto.py -h https://facebook.com -user [your user name] -password [your password]
