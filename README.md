@@ -16,31 +16,17 @@ Add driver to your PATH(e.g. in linux):
 **Help:**
 >python auto.py -h
 
-usage: auto.py [-h] -url URL [-login LOGIN] [-user USER] [-password PASSWORD]
-
-Pass arguments if necessary
-
-optional arguments:
-  -h, --help          show this help message and exit
-  -login LOGIN        login url if you want to login and it's not target
-                      url/login
-  -user USER          username if you want to login
-  -password PASSWORD  password if you want to login
-
-required argument(s):
-  -url URL            target url
-
-
+![Alt text](/images/auto-XSSer-help-command.png?raw=true "help command")
 
 **Run on Google Gruyere(a XSS *vulnerable website*):**
-* Note: id in url is the instance I created but you can create your in https://google-gruyere.appspot.com/start *
+*Note: id in url is the instance that I've created but you can create your in https://google-gruyere.appspot.com/start*
 >python auto.py -h https://google-gruyere.appspot.com/618655413586375839657115594994104056558/
 
 
 
-**Run on *non vulnerable website*(e.g. facebook.com at your own risk)**
-python auto.py -h https://facebook.com
+**Run on non vulnerable website(e.g. facebook.com at your own risk)**
+>python auto.py -h https://facebook.com
 
 
-**Pass user and password to login to the website automatically(e.g. facebook.com at your own risk) :**
->python auto.py -h https://facebook.com -user your user name -password your password
+**Optional; Pass user and password to login to the website automatically(e.g. facebook.com at your own risk) :**
+>python auto.py -h https://facebook.com -user [your user name] -password [your password]
