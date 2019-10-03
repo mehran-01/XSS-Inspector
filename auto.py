@@ -123,7 +123,7 @@ class AutoXSSTester():
 		  		current_url = self.browser.current_url
 			  	r = requests.get(current_url)
 			  	payload_counter = line
-			  	if payload.rstrip('\n') in r.content:
+			  	if payload.rstrip('\n') in r.content or payload.rstrip('\n').replace("\\", "/") in r.content:
 			  		print("payload "+ str(payload_counter) + " was injected: " + payload)
 			  	else:
 			  		print("payload "+ str(payload_counter) +" was not injected!")
