@@ -1,5 +1,5 @@
 ### auto-XSSer is An an automated penetration testing tool to test XSS vulnerabilities on web applications
-* Note: this app built for velnerabalities testing purporses by an authorised user so I m not responsible for any misuse
+* Note: this app built for vulnerabilities testing purporses by an authorised user so use it at your own risk
 
 ### Requirements:
 Download geckodriver from for Firefox from link below:
