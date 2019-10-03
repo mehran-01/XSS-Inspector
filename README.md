@@ -13,7 +13,7 @@ Add driver to your PATH(e.g. in linux):
 >export PATH="/path/to/dir:$PATH"
 
 ### auto-XSSer:
-** Help: **
+**Help:**
 >python auto.py -h
 
 usage: auto.py [-h] -url URL [-login LOGIN] [-user USER] [-password PASSWORD]
@@ -32,15 +32,15 @@ required argument(s):
 
 
 
-** Run on Google Gruyere(a XSS *vulnerable website*): **
+**Run on Google Gruyere(a XSS *vulnerable website*):**
 * Note: id in url is the instance I created but you can create your in https://google-gruyere.appspot.com/start *
 >python auto.py -h https://google-gruyere.appspot.com/618655413586375839657115594994104056558/
 
 
 
-** Run on *non vulnerable website*(e.g. facebook.com at your own risk) **
+**Run on *non vulnerable website*(e.g. facebook.com at your own risk)**
 python auto.py -h https://facebook.com
 
 
-** Pass user and password to login to the website automatically(e.g. facebook.com at your own risk) : **
+**Pass user and password to login to the website automatically(e.g. facebook.com at your own risk) :**
 >python auto.py -h https://facebook.com -user your user name -password your password
