@@ -130,7 +130,7 @@ class AutoXSSTester():
 
 
 
-
+#pass Firefox driver
 xss = AutoXSSTester(webdriver.Firefox())
 
 
