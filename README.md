@@ -1,5 +1,5 @@
 ### auto-XSSer is An an automated penetration testing tool to test XSS vulnerabilities on web applications
-* Note: this app built for vulnerabilities testing purporses by an authorised user so use it at your own risk
+* Note: this app built for vulnerabilities testing purporses by an authorised user so use it at your own responsibility
 
 ### Requirements:
 Download geckodriver from for Firefox from link below:
@@ -29,14 +29,14 @@ Add driver to your PATH(e.g. in linux):
 
 ** Not logged in but started injecting payloads immediately**
 
-**Test on a *non XSS vulnerable website*, possibly! (e.g. facebook.com at your own risk!)**
+**Test on a *non XSS vulnerable website*, possibly! (e.g. facebook.com at your own responsibility!)**
 >python auto.py -h https://facebook.com
 
 ![Alt text](/images/auto-XSSer-Facebook-Firefox.png?raw=true "auto XSSer Facebook Firefox")
 
 ** Not logged in but started injecting payloads immediately**
 
-**(Optional) Pass user and password to login to the website automatically(e.g. facebook.com at your own risk) :**
+**(Optional) Pass user and password to login to the website automatically(e.g. facebook.com at your own responsibility) :**
 >python auto.py -h https://facebook.com -user [your user name] -password [your password]
 
 ![Alt text](/images/auto-XSSer-Facebook-loggedin-Firefox.png?raw=true "auto XSSer Facebook logged in Firefox")
