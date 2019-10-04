@@ -43,4 +43,4 @@ Add driver to your PATH(e.g. in linux):
 
 ![Alt text](/images/auto-XSSer-Facebook-loggedin-Firefox.png?raw=true "auto XSSer Facebook logged in Firefox")
 
-**Logged in automaticaly and started injecting payloads**
+**Logged in automaticaly and started injecting payloads but payloads were not injected sicne it's not vulnerable, possibly!**
