@@ -88,6 +88,8 @@ class AutoXSSTester():
 			try:
 				login_attempt = self.browser.find_element_by_xpath("""//button[@type='submit']""")
 				print("submit button clicked")
+				#add a delay to not login immediately after credentials entered otherwise might recognize as a bot!
+				time.sleep(1)
 				login_attempt.submit()
 				print("logged in")
 			except:
