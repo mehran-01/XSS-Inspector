@@ -27,7 +27,7 @@ Add driver to your PATH(e.g. in linux):
 
 ![Alt text](/images/auto-XSSer-Google-Gruyere-terminal.png?raw=true "Google Gruyere terminal")
 
-**Started injecting payloads immediately and some of payloads were injected**
+**Started injecting payloads immediately and some of payloads were injected and means it's vulnerable to those payloads**
 
 ![Alt text](/images/auto-XSSer-Google-Gruyere-Firefox.png?raw=true "auto XSSer Google Gruyere Firefox")
 
@@ -36,7 +36,7 @@ Add driver to your PATH(e.g. in linux):
 
 ![Alt text](/images/auto-XSSer-Facebook-Firefox.png?raw=true "auto XSSer Facebook Firefox")
 
-**Not logged in but started injecting payloads immediately**
+**Not logged in but started injecting payloads immediately but payloads were not injected sicne it's not vulnerable, possibly!**
 
 **(Optional) Pass user and password to login to the website automatically(e.g. facebook.com at your own responsibility) :**
 >python auto.py -h https://facebook.com -user [your user name] -password [your password]
