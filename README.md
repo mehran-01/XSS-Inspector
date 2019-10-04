@@ -1,5 +1,5 @@
-### auto-XSSer is An an automated penetration testing tool to test XSS vulnerabilities on web applications
-* Note: this app built for vulnerabilities testing purporses by an authorised user so use it at your own responsibility
+### auto-XSSer is An automated penetration testing tool to test XSS vulnerabilities on web applications
+* Note: this app built for vulnerabilities testing purposes by an authorised user so use it at your own responsibility
 
 ### Requirements:
 Install Python:
@@ -43,4 +43,4 @@ Add driver to your PATH(e.g. in linux):
 
 ![Alt text](/images/auto-XSSer-Facebook-loggedin-Firefox.png?raw=true "auto XSSer Facebook logged in Firefox")
 
-*Logged in automaticaly and started injecting payloads but payloads were not injected sicne it's not vulnerable, possibly!*
+*Logged in automatically and started injecting payloads but payloads were not injected since it's not vulnerable, possibly!*
