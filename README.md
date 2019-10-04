@@ -2,11 +2,14 @@
 * Note: this app built for vulnerabilities testing purporses by an authorised user so use it at your own responsibility
 
 ### Requirements:
-Download geckodriver from for Firefox from link below:
+Install Python:
+https://realpython.com/installing-python/
+
+Download geckodriver from for Firefox from:
 https://github.com/mozilla/geckodriver/releases
 
 Run:
->pip install -r requirements.txt
+>pip install requests bs4 selenium argparse
 
 
 Add driver to your PATH(e.g. in linux):
