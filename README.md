@@ -5,12 +5,11 @@
 Install Python:
 https://realpython.com/installing-python/
 
-Download geckodriver from for Firefox from:
-https://github.com/mozilla/geckodriver/releases
-
-Run:
+Install packages:
 >pip install requests bs4 selenium argparse
 
+Download geckodriver Firefox from:
+https://github.com/mozilla/geckodriver/releases
 
 Add driver to your PATH(e.g. in linux):
 >export PATH="/path/to/dir:$PATH"
