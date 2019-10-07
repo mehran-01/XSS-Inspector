@@ -53,8 +53,8 @@ class AutoXSSTester():
 	def inputFieldLabels(self, inputFieldNames):
 		inputFieldLabels = []
 		for i in range(len(inputFieldNames)):
-			input_tag = str(inputs[i].parent.previous_sibling).replace(":", "").replace('\n','')
-			input_label_text = BeautifulSoup(input_tag, 'html.parser').get_text()
+			input_tag = inputs[i].parent.text.encode('utf-8').strip()
+			input_label_text = BeautifulSoup(input_tag, 'html.parser').get_text().lower()
 			inputFieldLabels.append(input_label_text)
 		return inputFieldLabels
 
@@ -89,7 +89,7 @@ class AutoXSSTester():
 				login_attempt = self.browser.find_element_by_xpath("""//button[@type='submit']""")
 				print("submit button clicked")
 				#add a delay to not login immediately after credentials entered otherwise might recognize as a bot!
-				time.sleep(1)
+				time.sleep(2)
 				login_attempt.submit()
 				print("logged in")
 			except:
@@ -103,12 +103,12 @@ class AutoXSSTester():
 		newurl = str(url)+"/"+str(payload)
 		self.browser.get(newurl);
 		try:
-		    WebDriverWait(self.browser, 1).until(EC.alert_is_present(),
+		    WebDriverWait(self.browser, 2).until(EC.alert_is_present(),
 		                                   'Timed out waiting for PA creation ' +
 		                                   'confirmation popup to appear.')
 
 		    alert = self.browser.switch_to.alert
-		    time.sleep(1)
+		    time.sleep(2)
 		    alert.accept()
 		    print("alert popped up and accepted")
 	   	except: 
@@ -155,7 +155,7 @@ if args.user and args.password:
 
 	xss.findLoginFieldsAndLogin(inputFieldNames, inputFieldLabels, url=args.url, url_login=args.login, user=args.user, password=args.password)		
 
-	time.sleep(1)
+	time.sleep(2)
 else:
 	print("user and password didn't pass so didn't login")
 
