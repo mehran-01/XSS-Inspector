@@ -31,16 +31,16 @@ Add driver to your PATH(e.g. in linux):
 
 ![Alt text](/images/auto-XSSer-Google-Gruyere-Firefox.png?raw=true "auto XSSer Google Gruyere Firefox")
 
-**Test on a *non XSS vulnerable website*, possibly! (e.g. facebook.com at your own responsibility!)**
->python auto.py -h https://facebook.com
+**Test on a *non XSS vulnerable website*, possibly! (e.g. errorhandle.com my own website!)**
+>python auto.py -h https://errorhandle.com
 
-![Alt text](/images/auto-XSSer-Facebook-Firefox.png?raw=true "auto XSSer Facebook Firefox")
+![Alt text](/images/auto-XSSer-eH-Firefox.png?raw=true "auto XSSer errorHandle Firefox")
 
 *Not logged in but started injecting payloads immediately but payloads were not injected sicne it's not vulnerable, possibly!*
 
-**(Optional) Pass user and password to login to the website automatically(e.g. facebook.com at your own responsibility) :**
->python auto.py -h https://facebook.com -user [your user name] -password [your password]
+**(Optional) Pass user and password to login to the website automatically(e.g. errorhandle.com my own website!) :**
+>python auto.py -h https://errorhandle.com -user [your user name] -password [your password]
 
-![Alt text](/images/auto-XSSer-Facebook-loggedin-Firefox.png?raw=true "auto XSSer Facebook logged in Firefox")
+![Alt text](/images/auto-XSSer-eH-loggedin-Firefox.png?raw=true "auto XSSer errorHandle logged in Firefox")
 
 *Logged in automatically and started injecting payloads but payloads were not injected since it's not vulnerable, possibly!*
