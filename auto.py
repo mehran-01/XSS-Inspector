@@ -118,29 +118,38 @@ class AutoXSSTester():
 
 	#injecting top500 xss scripts to the target
 	def injectPayload(self, payloads, url):
+		#Create a CSV to put injected result in it
+		f = open('result.csv','w')
+		#Loop through XSS payloads to inject one by one
 		with open(payloads, "r") as pl:
 			print("started injecting payloads:")
 		  	for line, payload in enumerate(pl, 1):
+		  		#Click if an alert/popup script passed to be able to go next one
 		  		self.handleAlert(url, payload, line)
 		  		current_url = self.browser.current_url
 			  	r = requests.get(current_url)
 			  	payload_counter = line
 			  	if payload.rstrip('\n') in r.content or payload.rstrip('\n').replace("\\", "/") in r.content:
-			  		print("payload "+ str(payload_counter) + " was injected: " + payload)
+			  		#print in terminal
+			  		print("payload #"+ str(payload_counter) + " was injected: " + payload)
+			  		#store in CSV
+					f.write("payload #"+ str(payload_counter) + " was injected: " + payload+'\n')
 			  	else:
+			  		#print in terminal
 			  		print("payload "+ str(payload_counter) +" was not injected!")
+			f.close()
 
 
 
 #pass Firefox driver
 xss = AutoXSSTester(webdriver.Firefox())
 
-
+#Create arguments commands
 parser = argparse.ArgumentParser(description='Pass arguments if necessary')
-
+#Required argument
 requiredArgs =  parser.add_argument_group('required argument(s)')
 requiredArgs.add_argument('-url', help='target url', required=True)
-
+#Optional argument
 parser.add_argument('-login', default="", help="login url if you want to login and it's not target url/login")
 parser.add_argument('-user', default="", help='username if you want to login')
 parser.add_argument('-password', default="", help='password if you want to login')
@@ -152,11 +161,11 @@ if args.user and args.password:
 	inputs = xss.getAllInputFields(url=args.url, url_login=args.login)
 	inputFieldNames = xss.inputFieldNames(inputs)
 	inputFieldLabels = xss.inputFieldLabels(inputFieldNames)
-
+	#Search for login button and login
 	xss.findLoginFieldsAndLogin(inputFieldNames, inputFieldLabels, url=args.url, url_login=args.login, user=args.user, password=args.password)		
-
+	#give it some time to login(not super fatst to be caught!)
 	time.sleep(2)
 else:
 	print("user and password didn't pass so didn't login")
-
+#Pass payloads to inject to the target
 xss.injectPayload("xss-top500.txt", url=args.url)
