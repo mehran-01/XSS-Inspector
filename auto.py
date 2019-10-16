@@ -119,7 +119,7 @@ class AutoXSSTester():
 	#injecting top500 xss scripts to the target
 	def injectPayload(self, payloads, url):
 		#Create a CSV to put injected result in it
-		f = open('result.csv','w')
+		f = open("output/"+'result.csv','w')
 		#Loop through XSS payloads to inject one by one
 		with open(payloads, "r") as pl:
 			print("started injecting payloads:")
