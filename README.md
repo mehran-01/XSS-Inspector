@@ -1,9 +1,18 @@
 ### XSS Inspector is an automated penetration testing tool to find XSS vulnerabilities on web applications
 * Note: this app built for vulnerabilities testing purposes by an authorized user so use it at your own responsibility
 
+
+### Different with similar tools
+* Open Source
+* Python 3 
+* Read from infinite payloads automatically
+* Login to any website automatically(worked on most cases)
+* See injections in real time in browser
+* Get report of the result stored as a CSV
+* More features will be added ...
+
 ### Requirements:
-Install Python3:
-https://realpython.com/installing-python/
+Install Python3
 
 Install packages:
 >pip install requests bs4 selenium argparse
