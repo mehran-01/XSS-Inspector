@@ -1,4 +1,4 @@
-### auto-XSSer is An automated penetration testing tool to test XSS vulnerabilities on web applications
+### XSS Inspector is An automated penetration testing tool to test XSS vulnerabilities on web applications
 * Note: this app built for vulnerabilities testing purposes by an authorised user so use it at your own responsibility
 
 ### Requirements:
@@ -14,7 +14,7 @@ https://github.com/mozilla/geckodriver/releases
 Add driver to your PATH(e.g. in linux):
 >export PATH="/path/to/dir:$PATH"
 
-### auto-XSSer:
+### XSS Inspector:
 **Help:**
 >python auto.py -h
 
