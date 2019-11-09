@@ -12,15 +12,15 @@
 * More features will be added ...
 
 ### Requirements:
-Install Python3
+1) Install Python3
 
-Install packages:
+2) Install packages:
 >pip install requests bs4 selenium argparse
 
-Download geckodriver Firefox from:
+3) Download geckodriver Firefox from:
 https://github.com/mozilla/geckodriver/releases
 
-Add driver to your PATH(e.g. in linux):
+4) Add driver to your PATH(e.g. in linux):
 >export PATH="/path/to/dir:$PATH"
 
 ### XSS Inspector:
