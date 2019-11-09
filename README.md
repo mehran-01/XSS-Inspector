@@ -2,7 +2,7 @@
 * Note: this app built for vulnerabilities testing purposes by an authorized user so use it at your own responsibility
 
 ### Requirements:
-Install Python:
+Install Python3:
 https://realpython.com/installing-python/
 
 Install packages:
