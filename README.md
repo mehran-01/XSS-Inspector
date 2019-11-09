@@ -1,5 +1,5 @@
-### XSS Inspector is An automated penetration testing tool to test XSS vulnerabilities on web applications
-* Note: this app built for vulnerabilities testing purposes by an authorised user so use it at your own responsibility
+### XSS Inspector is an automated penetration testing tool to test XSS vulnerabilities on web applications
+* Note: this app built for vulnerabilities testing purposes by an authorized user so use it at your own responsibility
 
 ### Requirements:
 Install Python:
@@ -36,11 +36,11 @@ Add driver to your PATH(e.g. in linux):
 
 ![Alt text](/images/auto-XSSer-eH-Firefox.png?raw=true "auto XSSer errorHandle Firefox")
 
-*Not logged in but started injecting payloads immediately but payloads were not injected sicne it's not vulnerable, possibly!*
+*Not logged in but started injecting payloads immediately but payloads were not injected sicne it's not vulnerable, possibly! *
 
-**(Optional) Pass user and password to login to the website automatically(e.g. errorhandle.com my own website!) :**
->python auto.py -h https://errorhandle.com -user [your user name] -password [your password]
+**(Optional) Pass user and password to login to the website automatically (e.g. errorhandle.com my own website!) :**
+>python auto.py -h https://errorhandle.com -user [your username] -password [your password]
 
 ![Alt text](/images/auto-XSSer-eH-loggedin-Firefox.png?raw=true "auto XSSer errorHandle logged in Firefox")
 
-*Logged in automatically and started injecting payloads but payloads were not injected since it's not vulnerable, possibly!*
+*Logged in automatically and started injecting payloads but payloads were not injected since it's not vulnerable, possibly! *
