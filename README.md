@@ -1,4 +1,4 @@
-### XSS Inspector is an automated penetration testing tool to test XSS vulnerabilities on web applications
+### XSS Inspector is an automated penetration testing tool to find XSS vulnerabilities on web applications
 * Note: this app built for vulnerabilities testing purposes by an authorized user so use it at your own responsibility
 
 ### Requirements:
