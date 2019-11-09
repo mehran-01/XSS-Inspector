@@ -2,7 +2,7 @@
 * Note: this app built for vulnerabilities testing purposes by an authorized user so use it at your own responsibility
 
 
-### Different with similar tools
+### Difference with similar tools
 * Open Source
 * Python 3 
 * Read from infinite payloads automatically
