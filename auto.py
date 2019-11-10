@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import argparse
-
+import os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -118,6 +118,8 @@ class AutoXSSTester():
 
 	#injecting top500 xss scripts to the target
 	def injectPayload(self, payloads, url):
+		if not os.path.exists('output'):
+			os.makedirs('output')
 		#Create a CSV to put injected result in it
 		f = open("output/"+'result.csv','w')
 		#Loop through XSS payloads to inject one by one
