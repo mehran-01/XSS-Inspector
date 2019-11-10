@@ -134,7 +134,7 @@ class AutoXSSTester():
 			  		#print in terminal
 			  		print("payload #"+ str(payload_counter) + " was injected: " + payload)
 			  		#Create a CSV to put injected result in it
-					f = open("output/"+'result.csv','w')
+					f = open("output/"+'result.csv','a')
 			  		#store in CSV
 					f.write("payload #"+ str(payload_counter) + " was injected: " + payload+'\n')
 			  	else:
