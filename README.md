@@ -6,7 +6,7 @@
 * Open Source
 * Python 3 
 * Read from infinite payloads automatically
-* Handling alerts payloads to click automatically
+* Handling alerts to click automatically
 * Login to any website automatically(worked on most cases)
 * See injections in real time in browser
 * Get report of the result stored as a CSV
