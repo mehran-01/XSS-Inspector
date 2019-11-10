@@ -58,3 +58,5 @@ https://github.com/mozilla/geckodriver/releases
 ![Alt text](/images/XSS-Inspector-eH-loggedin-Firefox.png?raw=true "auto XSSer errorHandle logged in Firefox")
 
 * Logged in automatically and started injecting payloads but payloads were not injected since it's not vulnerable, possibly!
+
+* Finally you can get a CSV report of injected payloads in output folder(there won't be any report in output folder if non of payloads were injected)

@@ -120,8 +120,7 @@ class AutoXSSTester():
 	def injectPayload(self, payloads, url):
 		if not os.path.exists('output'):
 			os.makedirs('output')
-		#Create a CSV to put injected result in it
-		f = open("output/"+'result.csv','w')
+
 		#Loop through XSS payloads to inject one by one
 		with open(payloads, "r") as pl:
 			print("started injecting payloads:")
@@ -134,6 +133,8 @@ class AutoXSSTester():
 			  	if payload.rstrip('\n') in r.content or payload.rstrip('\n').replace("\\", "/") in r.content:
 			  		#print in terminal
 			  		print("payload #"+ str(payload_counter) + " was injected: " + payload)
+			  		#Create a CSV to put injected result in it
+					f = open("output/"+'result.csv','w')
 			  		#store in CSV
 					f.write("payload #"+ str(payload_counter) + " was injected: " + payload+'\n')
 			  	else:
