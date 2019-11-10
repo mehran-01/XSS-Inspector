@@ -143,10 +143,7 @@ class AutoXSSTester():
 
 
 
-#pass Firefox driver
-xss = AutoXSSTester(webdriver.Firefox())
-
-#Create arguments commands
+#Create arguments parameters
 parser = argparse.ArgumentParser(description='Pass arguments if necessary')
 #Required argument
 requiredArgs =  parser.add_argument_group('required argument(s)')
@@ -156,18 +153,26 @@ parser.add_argument('-login', default="", help="login url if you want to login a
 parser.add_argument('-user', default="", help='username if you want to login')
 parser.add_argument('-password', default="", help='password if you want to login')
 
-
+#Create arguments commands
 args = parser.parse_args()
 
-if args.user and args.password:
-	inputs = xss.getAllInputFields(url=args.url, url_login=args.login)
-	inputFieldNames = xss.inputFieldNames(inputs)
-	inputFieldLabels = xss.inputFieldLabels(inputFieldNames)
-	#Search for login button and login
-	xss.findLoginFieldsAndLogin(inputFieldNames, inputFieldLabels, url=args.url, url_login=args.login, user=args.user, password=args.password)		
-	#give it some time to login(not super fatst to be caught!)
-	time.sleep(2)
-else:
-	print("user and password didn't pass so didn't login")
-#Pass payloads to inject to the target
-xss.injectPayload("xss-top500.txt", url=args.url)
+
+if args:
+
+	#pass Firefox driver
+	xss = AutoXSSTester(webdriver.Firefox())
+
+	#Pass payloads to inject to the target
+	xss.injectPayload("xss-top500.txt", url=args.url)
+
+
+	if args.user and args.password:
+		inputs = xss.getAllInputFields(url=args.url, url_login=args.login)
+		inputFieldNames = xss.inputFieldNames(inputs)
+		inputFieldLabels = xss.inputFieldLabels(inputFieldNames)
+		#Search for login button and login
+		xss.findLoginFieldsAndLogin(inputFieldNames, inputFieldLabels, url=args.url, url_login=args.login, user=args.user, password=args.password)		
+		#give it some time to login(not super fatst to be caught!)
+		time.sleep(2)
+	else:
+		print("user and password didn't pass so didn't login")
