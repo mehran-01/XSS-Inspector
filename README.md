@@ -46,7 +46,7 @@ https://github.com/mozilla/geckodriver/releases
 
 ![Alt text](/images/XSS-Inspector-eH-Firefox.png?raw=true "auto XSSer errorHandle Firefox")
 
-*Not logged in but started injecting payloads immediately but payloads were not injected sicne it's not vulnerable, possibly! *
+*Not logged in and started injecting payloads immediately but payloads were not injected sicne it's not vulnerable, possibly! *
 
 **(Optional) Pass user and password to login to the website automatically (e.g. errorhandle.com my own website!) :**
 >python auto.py -h https://errorhandle.com -user [your username] -password [your password]
