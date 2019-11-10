@@ -44,6 +44,10 @@ https://github.com/mozilla/geckodriver/releases
 **Test on a *non XSS vulnerable website*. (e.g. errorhandle.com my own website!)**
 >python auto.py -url https://errorhandle.com
 
+![Alt text](/images/XSS-Inspector-eH-terminal.png?raw=true "eH terminal")
+
+*Started injecting payloads immediately and none of payloads were injected and means it's not vulnerable to those payloads*
+
 ![Alt text](/images/XSS-Inspector-eH-Firefox.png?raw=true "auto XSSer errorHandle Firefox")
 
 * Not logged in and started injecting payloads immediately but payloads were not injected sicne suppose to not be vulnerable.
