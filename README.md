@@ -33,7 +33,7 @@ https://github.com/mozilla/geckodriver/releases
 **Test on a XSS *vulnerable website* (e.g. Google Gruyere):**
 * Note: id in url is the instance that I've created but you can create yours through https://google-gruyere.appspot.com/start
 
->python auto.py -h https://google-gruyere.appspot.com/618655413586375839657115594994104056558/
+>python auto.py -url https://google-gruyere.appspot.com/618655413586375839657115594994104056558/
 
 ![Alt text](/images/XSS-Inspector-Google-Gruyere-terminal.png?raw=true "Google Gruyere terminal")
 
@@ -42,14 +42,14 @@ https://github.com/mozilla/geckodriver/releases
 ![Alt text](/images/XSS-Inspector-Google-Gruyere-Firefox.png?raw=true "auto XSSer Google Gruyere Firefox")
 
 **Test on a *non XSS vulnerable website*. (e.g. errorhandle.com my own website!)**
->python auto.py -h https://errorhandle.com
+>python auto.py -url https://errorhandle.com
 
 ![Alt text](/images/XSS-Inspector-eH-Firefox.png?raw=true "auto XSSer errorHandle Firefox")
 
 * Not logged in and started injecting payloads immediately but payloads were not injected sicne suppose to not be vulnerable.
 
 **(Optional) Pass user and password to login to the website automatically (e.g. errorhandle.com my own website!) :**
->python auto.py -h https://errorhandle.com -user [your username] -password [your password]
+>python auto.py -url https://errorhandle.com -user [your username] -password [your password]
 
 ![Alt text](/images/XSS-Inspector-eH-loggedin-Firefox.png?raw=true "auto XSSer errorHandle logged in Firefox")
 

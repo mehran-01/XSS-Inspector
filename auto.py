@@ -162,10 +162,6 @@ if args:
 	#pass Firefox driver
 	xss = AutoXSSTester(webdriver.Firefox())
 
-	#Pass payloads to inject to the target
-	xss.injectPayload("xss-top500.txt", url=args.url)
-
-
 	if args.user and args.password:
 		inputs = xss.getAllInputFields(url=args.url, url_login=args.login)
 		inputFieldNames = xss.inputFieldNames(inputs)
@@ -176,3 +172,7 @@ if args:
 		time.sleep(2)
 	else:
 		print("user and password didn't pass so didn't login")
+
+
+	#Pass payloads to inject to the target
+	xss.injectPayload("xss-top500.txt", url=args.url)
