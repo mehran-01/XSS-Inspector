@@ -118,6 +118,9 @@ class AutoXSSTester():
 
 	#injecting top500 xss scripts to the target
 	def injectPayload(self, payloads, url):
+		#Check if last result exists 
+		if os.path.exists("output/result.csv"):
+  			os.remove("output/result.csv")
 		if not os.path.exists('output'):
 			os.makedirs('output')
 
