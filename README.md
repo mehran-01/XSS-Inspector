@@ -3,7 +3,6 @@
 
 
 ### Difference with similar tools
-* Open Source
 * Python 3 
 * Read from infinite payloads automatically
 * Handling alerts to click automatically
